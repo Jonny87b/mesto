@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="pages/index.css" />
+    <title>MESTO</title>
+  </head>
+  <body class="body">
+    <div class="page">
+      <div class="header">
+        <img
+          class="header__logo"
+          src="images/Logo/Logo.svg"
+          alt="mesto russia"
+        />
+      </div>
+      <main class="conteiner">
+        <section class="profile">
+          <img
+            class="profile__avatar"
+            src="images/Avatar/Avatar-Custo.jpg"
+            alt="Жак-Ив Кусто"
+          />
+          <div class="profile-info">
+            <div class="profile-info__name">
+              <h1 class="profile-info__title">Жак-Ив Кусто</h1>
+              <p class="profile-info__subtitle">Исследователь океана</p>
+            </div>
+            <button class="profile-info__edit-button"></button>
+          </div>
+          <button class="profile-info__add-button"></button>
+        </section>
+        <section class="elements">
+          <div class="element">
+            <img
+              class="element__photo"
+              src="images/irina-shishkina-dp0Z-i7zYHc-unsplash.jpg"
+              alt="карачаевск"
+            />
+            <div class="element__block">
+              <h2 class="element__title">Карачаевск</h2>
+              <img
+                class="element__heart"
+                src="images/Group/Group.svg"
+                alt="сердце"
+              />
+            </div>
+          </div>
+          <div class="element">
+            <img
+              class="element__photo"
+              src="images/34131350951_ae3b3c56b9_o.jpg"
+              alt="карачаевск"
+            />
+            <div class="element__block">
+              <h2 class="element__title">Гора Эльбрус</h2>
+              <img
+                class="element__heart"
+                src="images/Group/Group.svg"
+                alt="сердце"
+              />
+            </div>
+          </div>
+          <div class="element">
+            <img
+              class="element__photo"
+              src="images/Elements/kirill-pershin-1556355-unsplash.jpg"
+              alt="карачаевск"
+            />
+            <div class="element__block">
+              <h2 class="element__title">Домбай</h2>
+              <img
+                class="element__heart"
+                src="images/Group/Group.svg"
+                alt="сердце"
+              />
+            </div>
+          </div>
+          <div class="element">
+            <img
+              class="element__photo"
+              src="images/Elements/kirill-pershin-1404681-unsplash.jpg"
+              alt="карачаевск"
+            />
+            <div class="element__block">
+              <h2 class="element__title">Гора Эльбрус</h2>
+              <img
+                class="element__heart"
+                src="images/Group/Group.svg"
+                alt="сердце"
+              />
+            </div>
+          </div>
+          <div class="element">
+            <img
+              class="element__photo"
+              src="images/Elements/kirill-pershin-1556355-unsplash.jpg"
+              alt="карачаевск"
+            />
+            <div class="element__block">
+              <h2 class="element__title">Домбай</h2>
+              <img
+                class="element__heart"
+                src="images/Group/Group.svg"
+                alt="сердце"
+              />
+            </div>
+          </div>
+          <div class="element">
+            <img
+              class="element__photo"
+              src="images/Elements/kirill-pershin-1088404-unsplash.jpg"
+              alt="карачаевск"
+            />
+            <div class="element__block">
+              <h2 class="element__title">Карачаево-Черкессия</h2>
+              <img
+                class="element__heart"
+                src="images/Group/Group.svg"
+                alt="сердце"
+              />
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="footer">
+        <a class="footer__copyright">&copy;2021.Mesto Russia</a>
+      </footer>
+    </div>
+    <popup class="popup">
+      <div class="popup__conteiner">
+        <div class="popup__body">
+          <p class="popup__title">Редактировать профиль</p>
+          <form action="popup__form">
+            <input class="popup__text" type="text" placeholder="Жак-Ив Кусто" />
+            <input
+              class="popup__text"
+              type="text"
+              placeholder="Исследователь океана"
+            />
+            <button class="popup__saved">сохранить</button>
+          </form>
+          <button class="popup__close"></button>
+        </div>
+      </div>
+    </popup>
+    <script src="scripts/scripts.js"></script>
+  </body>
+</html>
