@@ -1,17 +1,19 @@
 # Проект: Место
 
-### Обзор
+### Проектная работа № 4
 
-* Figma
-* Картинки
+**Инструменты**
 
-**Figma**
+1. Знакомство с DOM.
+2. Дебаггинг JavaScript.
+3. Работа с макетом Figma \* [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1).
 
-* [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
+**Интро**
 
-**Картинки**
+Проект о местах России с профилем пользователя.
+Создание Popup.
+Простроен с макера Figma.
 
-Доставать картинки предстоит из Фигмы. Это расхожая практика, поэтому полезно потренироваться.
-Не забудьте [оптимизировать картинки](https://tinypng.com/), чтобы ваш сайт загружался быстрее.
+**GitHub Pages**
 
-Удачи!
+- [Ссылка на сайт GitHub Pages](https://jonny87b.github.io/mesto/index.html)
