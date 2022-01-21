@@ -1,22 +1,22 @@
-.edit-button {
+.profile-info__button {
   /* grid-area: edit button; */
   width: 24px;
   height: 24px;
   padding: 0;
   margin: 15px auto;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0);
   background-image: url(../../../images/Edit/Vector.svg);
   background-repeat: no-repeat;
   background-position: center;
   border: 1px solid #fff;
   cursor: pointer;
 }
-.edit-button:hover {
+.profile-info__button:hover {
   opacity: 60%;
   transition-duration: 0.5s;
 }
 @media screen and (max-width: 930px) {
-  .edit-button {
+  .profile-info__button {
     position: absolute;
     margin: 0;
     top: 7px;

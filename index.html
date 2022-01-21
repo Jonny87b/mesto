@@ -4,22 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="pages/index.css" />
-    <title>MESTO</title>
+    <title>МЕСТО</title>
   </head>
   <body class="body">
     <div class="page">
-      <div class="header">
+      <header class="header">
         <img
           class="header__logo"
           src="images/Logo/Logo.svg"
           alt="Места России"
         />
-      </div>
+      </header>
       <main class="conteiner">
         <section class="profile">
           <img
             class="profile__avatar"
-            src="images/Avatar/Avatar-Custo.jpg"
+            src="images/Avatar/cxGUyrc1eEI.jpg"
             alt="Жак-Ив Кусто"
           />
           <div class="profile-info">
@@ -27,12 +27,15 @@
               <h1 class="profile-info__title">Жак-Ив Кусто</h1>
               <p class="profile-info__subtitle">Исследователь океана</p>
             </div>
-            <button class="edit-button"></button>
+            <button
+              aria-label="edit-button"
+              class="profile-info__button"
+            ></button>
           </div>
-          <button class="add-button"></button>
+          <button aria-label="add-button" class="profile__button"></button>
         </section>
         <section class="elements">
-          <div class="element">
+          <article class="element">
             <img
               class="element__photo"
               src="images/Elements/kirill-pershin-1088404-unsplash.jpg"
@@ -40,14 +43,10 @@
             />
             <div class="element__block">
               <h2 class="element__title">Карачаевск</h2>
-              <img
-                class="element__heart"
-                src="images/Group/hearts.png"
-                alt="сердце"
-              />
+              <button aria-label="heart-button" class="element__heart"></button>
             </div>
-          </div>
-          <div class="element">
+          </article>
+          <article class="element">
             <img
               class="element__photo"
               src="images/Elements/kirill-pershin-1404681-unsplash.jpg"
@@ -55,14 +54,10 @@
             />
             <div class="element__block">
               <h2 class="element__title">Гора Эльбрус</h2>
-              <img
-                class="element__heart"
-                src="images/Group/hearts.png"
-                alt="сердце"
-              />
+              <button aria-label="heart-button" class="element__heart"></button>
             </div>
-          </div>
-          <div class="element">
+          </article>
+          <article class="element">
             <img
               class="element__photo"
               src="images/Elements/kirill-pershin-1556355-unsplash.jpg"
@@ -70,14 +65,10 @@
             />
             <div class="element__block">
               <h2 class="element__title">Домбай</h2>
-              <img
-                class="element__heart"
-                src="images/Group/hearts.png"
-                alt="сердце"
-              />
+              <button aria-label="heart-button" class="element__heart"></button>
             </div>
-          </div>
-          <div class="element">
+          </article>
+          <article class="element">
             <img
               class="element__photo"
               src="images/Elements/kirill-pershin-1404681-unsplash.jpg"
@@ -85,14 +76,10 @@
             />
             <div class="element__block">
               <h2 class="element__title">Гора Эльбрус</h2>
-              <img
-                class="element__heart"
-                src="images/Group/hearts.png"
-                alt="сердце"
-              />
+              <button aria-label="heart-button" class="element__heart"></button>
             </div>
-          </div>
-          <div class="element">
+          </article>
+          <article class="element">
             <img
               class="element__photo"
               src="images/Elements/kirill-pershin-1556355-unsplash.jpg"
@@ -100,14 +87,10 @@
             />
             <div class="element__block">
               <h2 class="element__title">Домбай</h2>
-              <img
-                class="element__heart"
-                src="images/Group/hearts.png"
-                alt="сердце"
-              />
+              <button aria-label="heart-button" class="element__heart"></button>
             </div>
-          </div>
-          <div class="element">
+          </article>
+          <article class="element">
             <img
               class="element__photo"
               src="images/Elements/kirill-pershin-1088404-unsplash.jpg"
@@ -115,34 +98,36 @@
             />
             <div class="element__block">
               <h2 class="element__title">Карачаево-Черкессия</h2>
-              <img
-                class="element__heart"
-                src="images/Group/hearts.png"
-                alt="сердце"
-              />
+              <button aria-label="heart-button" class="element__heart"></button>
             </div>
-          </div>
+          </article>
         </section>
       </main>
       <footer class="footer">
-        <a class="footer__copyright">&copy;2021.Mesto Russia</a>
+        <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
       </footer>
     </div>
     <div class="popup">
-      <div class="popup__conteiner">
-        <div class="popup__body">
-          <p class="popup__title">Редактировать профиль</p>
-          <form class="popup__form">
-            <input class="popup__text popup__name" type="text" placeholder="" />
-            <input
-              class="popup__text popup__status"
-              type="text"
-              placeholder=""
-            />
-            <button class="popup__saved">сохранить</button>
-          </form>
-          <button type="submit" class="popup__close"></button>
-        </div>
+      <div class="popup__body">
+        <h3 class="popup__title">Редактировать профиль</h3>
+        <form name="edit-form" class="popup__form">
+          <input
+            id="popup_name"
+            name="name"
+            class="popup__text popup__text_name"
+            type="text"
+            placeholder=""
+          />
+          <input
+            id="popup_status"
+            name="status"
+            class="popup__text popup__text_status"
+            type="text"
+            placeholder=""
+          />
+          <button type="submit" class="submit-button">сохранить</button>
+        </form>
+        <button aria-label="close" class="popup__close-button"></button>
       </div>
     </div>
     <script src="scripts/scripts.js"></script>

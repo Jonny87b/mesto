@@ -4,13 +4,10 @@
   color: #000;
   border-radius: 10px;
   max-width: 430px;
-  max-height: 330px;
-  padding: 0;
-  margin: 195px auto;
+  padding: 34px 36px 37px;
 }
 @media screen and (max-width: 470px) {
   .popup__body {
-    margin: 123px auto 0;
-    max-height: 320px;
+    padding: 25px 22px;
   }
 }
