@@ -5,13 +5,13 @@ const popupCloseButton = document.querySelector(".popup__close-button");
 function openPopup() {
   popup.classList.add("popup_opened");
   let profileName = document.querySelector(".profile-info__title").textContent;
-  let popupName = document.querySelector(".popup__text_name");
+  let popupName = document.querySelector(".popup__text_type_name");
   popupName.value = profileName;
 
   let profilestatus = document.querySelector(
     ".profile-info__subtitle"
   ).textContent;
-  let popupstatus = document.querySelector(".popup__text_status");
+  let popupstatus = document.querySelector(".popup__text_type_status");
   popupstatus.value = profilestatus;
 }
 
@@ -24,10 +24,10 @@ popupForm.addEventListener("submit", formSubmitHandler);
 
 function formSubmitHandler(evt) {
   evt.preventDefault();
-  let nameInput = document.querySelector(".popup__text_name").value;
+  let nameInput = document.querySelector(".popup__text_type_name").value;
   document.querySelector(".profile-info__title").textContent = nameInput;
 
-  let jobInput = document.querySelector(".popup__text_status").value;
+  let jobInput = document.querySelector(".popup__text_type_status").value;
   document.querySelector(".profile-info__subtitle").textContent = jobInput;
   popup.classList.remove("popup_opened");
 }
