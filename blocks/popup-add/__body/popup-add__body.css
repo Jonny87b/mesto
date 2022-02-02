@@ -1,0 +1,13 @@
+.popup-add__body {
+  position: relative;
+  background-color: #fff;
+  color: #000;
+  border-radius: 10px;
+  max-width: 430px;
+  padding: 34px 36px 37px;
+}
+@media screen and (max-width: 470px) {
+  .popup-add__body {
+    padding: 25px 22px;
+  }
+}

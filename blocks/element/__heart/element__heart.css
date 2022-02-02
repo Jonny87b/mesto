@@ -11,7 +11,3 @@
   opacity: 50%;
   transition-duration: 0.5s;
 }
-.element__heart:active {
-  background-image: url(../../../images/Group/black_heats.png);
-  opacity: 100%;
-}

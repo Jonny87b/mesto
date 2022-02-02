@@ -27,84 +27,25 @@
               <h1 class="profile-info__title">Жак-Ив Кусто</h1>
               <p class="profile-info__subtitle">Исследователь океана</p>
             </div>
-            <button type="button" class="profile-info__button"></button>
+            <button
+              type="button"
+              class="profile-info__button"
+              id="popup_open"
+            ></button>
           </div>
-          <button type="button" class="profile__button"></button>
+          <button
+            type="button"
+            class="profile__button"
+            id="popup_open_add"
+          ></button>
         </section>
-        <section class="elements">
-          <article class="element">
-            <img
-              class="element__photo"
-              src="images/Elements/kirill-pershin-1088404-unsplash.jpg"
-              alt="карачаевск"
-            />
-            <div class="element__block">
-              <h2 class="element__title">Карачаевск</h2>
-              <button type="button" class="element__heart"></button>
-            </div>
-          </article>
-          <article class="element">
-            <img
-              class="element__photo"
-              src="images/Elements/kirill-pershin-1404681-unsplash.jpg"
-              alt="карачаевск"
-            />
-            <div class="element__block">
-              <h2 class="element__title">Гора Эльбрус</h2>
-              <button type="button" class="element__heart"></button>
-            </div>
-          </article>
-          <article class="element">
-            <img
-              class="element__photo"
-              src="images/Elements/kirill-pershin-1556355-unsplash.jpg"
-              alt="карачаевск"
-            />
-            <div class="element__block">
-              <h2 class="element__title">Домбай</h2>
-              <button type="button" class="element__heart"></button>
-            </div>
-          </article>
-          <article class="element">
-            <img
-              class="element__photo"
-              src="images/Elements/kirill-pershin-1404681-unsplash.jpg"
-              alt="карачаевск"
-            />
-            <div class="element__block">
-              <h2 class="element__title">Гора Эльбрус</h2>
-              <button type="button" class="element__heart"></button>
-            </div>
-          </article>
-          <article class="element">
-            <img
-              class="element__photo"
-              src="images/Elements/kirill-pershin-1556355-unsplash.jpg"
-              alt="карачаевск"
-            />
-            <div class="element__block">
-              <h2 class="element__title">Домбай</h2>
-              <button type="button" class="element__heart"></button>
-            </div>
-          </article>
-          <article class="element">
-            <img
-              class="element__photo"
-              src="images/Elements/kirill-pershin-1088404-unsplash.jpg"
-              alt="карачаевск"
-            />
-            <div class="element__block">
-              <h2 class="element__title">Карачаево-Черкессия</h2>
-              <button type="button" class="element__heart"></button>
-            </div>
-          </article>
-        </section>
+        <section class="elements"></section>
       </main>
       <footer class="footer">
         <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
       </footer>
     </div>
-    <div class="popup">
+    <div class="popup" id="popup">
       <div class="popup__body">
         <h3 class="popup__title">Редактировать профиль</h3>
         <form name="edit-form" class="popup__form">
@@ -127,6 +68,56 @@
         <button type="button" class="popup__close-button"></button>
       </div>
     </div>
+    <div class="popup popup-add" id="popup_2">
+      <div class="popup-add__body">
+        <h3 class="popup-add__title">Новое место</h3>
+        <form name="edit-form" class="popup-add__form">
+          <input
+            id="popup-add_name"
+            name="name"
+            class="popup-add__text popup-add__text_type_name"
+            type="text"
+            placeholder="Название"
+          />
+          <input
+            id="popup-add_link"
+            name="link"
+            class="popup-add__text popup-add__text_type_link"
+            type="text"
+            placeholder="Ссылка на картинку"
+          />
+          <button type="submit" class="submit-button" id="submit">
+            сохранить
+          </button>
+        </form>
+        <button
+          type="button"
+          class="popup-add__close-button"
+          id="popup-add_close"
+        ></button>
+      </div>
+    </div>
+    <div class="popup popup-image" id="popup_3">
+      <div class="popup-image__body">
+        <img class="popup-image__image" src="#" alt="фотокарточка" />
+        <h3 class="popup-image__title"></h3>
+        <button
+          type="button"
+          class="popup-image__close-button"
+          id="popup-image_close"
+        ></button>
+      </div>
+    </div>
+    <template class="template" id="template">
+      <article class="element">
+        <img class="element__photo" src="" alt="фотокарточка" />
+        <div class="element__block">
+          <h2 class="element__title"></h2>
+          <button type="button" class="element__heart"></button>
+        </div>
+        <button tupe="button" class="element__delete"></button>
+      </article>
+    </template>
     <script src="scripts/scripts.js"></script>
   </body>
 </html>

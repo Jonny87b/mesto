@@ -1,0 +1,11 @@
+.element__delete {
+  width: 18px;
+  height: 19px;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  background-image: url(../../../images/delete/Trash.svg);
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  position: absolute;
+}
