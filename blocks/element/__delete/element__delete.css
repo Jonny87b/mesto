@@ -9,3 +9,7 @@
   border: none;
   position: absolute;
 }
+.element__delete:hover {
+  opacity: 60%;
+  transition-duration: 0.5s;
+}
