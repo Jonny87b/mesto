@@ -30,7 +30,7 @@
             <button
               type="button"
               class="profile-info__button"
-              id="popup_open"
+              id="popup_open_edit"
             ></button>
           </div>
           <button
@@ -45,20 +45,20 @@
         <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
       </footer>
     </div>
-    <div class="popup" id="popup">
+    <div class="popup popup-edit" id="popup_edit">
       <div class="popup__body">
         <h3 class="popup__title">Редактировать профиль</h3>
-        <form name="edit-form" class="popup__form">
+        <form name="form-edit" class="popup__form">
           <input
             id="popup_name"
-            name="name"
+            name="name_edit"
             class="popup__text popup__text_type_name"
             type="text"
             placeholder=""
           />
           <input
             id="popup_status"
-            name="status"
+            name="status_edit"
             class="popup__text popup__text_type_status"
             type="text"
             placeholder=""
@@ -68,20 +68,20 @@
         <button type="button" class="popup__close-button"></button>
       </div>
     </div>
-    <div class="popup popup-add" id="popup_2">
+    <div class="popup popup-add" id="popup_add">
       <div class="popup-add__body">
         <h3 class="popup-add__title">Новое место</h3>
-        <form name="edit-form" class="popup-add__form">
+        <form name="form-add" class="popup-add__form">
           <input
             id="popup-add_name"
-            name="name"
+            name="name_add"
             class="popup-add__text popup-add__text_type_name"
             type="text"
             placeholder="Название"
           />
           <input
             id="popup-add_link"
-            name="link"
+            name="link_add"
             class="popup-add__text popup-add__text_type_link"
             type="text"
             placeholder="Ссылка на картинку"
@@ -97,7 +97,7 @@
         ></button>
       </div>
     </div>
-    <div class="popup popup-image" id="popup_3">
+    <div class="popup popup-image" id="popup_image">
       <div class="popup-image__body">
         <img class="popup-image__image" src="#" alt="фотокарточка" />
         <h3 class="popup-image__title"></h3>
