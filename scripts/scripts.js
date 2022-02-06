@@ -51,7 +51,7 @@ popupProfileCloseButton.addEventListener("click", () =>
   closePopup(popupProfile)
 );
 
-const popupProfileForm = popupProfile;
+const popupProfileForm = popupProfile.querySelector(".popup__form");
 popupProfileForm.addEventListener("submit", submitProfileForm);
 
 function submitProfileForm(evt) {
@@ -62,7 +62,6 @@ function submitProfileForm(evt) {
 }
 
 profileOpenPopupButton.addEventListener("click", openProfile);
-popupProfileCloseButton.addEventListener("click", closePopup(popupProfile));
 
 popupProfile.addEventListener("click", function (evt) {
   if (evt.target === evt.currentTarget) {
@@ -129,9 +128,6 @@ function formSubmitHandlerAddCard(evt) {
 const popupFormAdd = document.querySelector(".popup-add__form");
 popupFormAdd.addEventListener("submit", formSubmitHandlerAddCard);
 
-profileOpenPopupButtonAdd.addEventListener("click", openPopup(popupAdd));
-popupCloseButtonAdd.addEventListener("click", closePopup(popupAdd));
-
 popupAdd.addEventListener("click", function (evt) {
   if (evt.target === evt.currentTarget) {
     closePopup(popupAdd);
@@ -146,9 +142,6 @@ const popupCloseButtonImage = document.querySelector(
 
 popupOpenElementPhoto.addEventListener("click", () => openPopup(popupImage));
 popupCloseButtonImage.addEventListener("click", () => closePopup(popupImage));
-
-popupOpenElementPhoto.addEventListener("click", openPopup(popupImage));
-popupCloseButtonImage.addEventListener("click", closePopup(popupImage));
 
 popupImage.addEventListener("click", function (evt) {
   if (evt.target === evt.currentTarget) {
