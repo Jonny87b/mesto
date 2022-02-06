@@ -43,38 +43,30 @@ function closePopup(popup) {
 
 function openProfile() {
   openPopup(popupProfile);
-  const profileName = profileInfoTitle.textContent;
-  const popupName = popupTextTypeName;
-  popupName.value = profileName;
-
-  const profilestatus = profileInfoSubtitle.textContent;
-  const popupstatus = popupTextTypeStatus;
-  popupstatus.value = profilestatus;
+  popupTextTypeName.value = profileInfoTitle.textContent;
+  popupTextTypeStatus.value = profileInfoSubtitle.textContent;
 }
 
-function closeProfile() {
-  closePopup(popupProfile);
-}
+popupProfileCloseButton.addEventListener("click", () =>
+  closePopup(popupProfile)
+);
 
-const popupProfileForm = document.querySelector(".popup__form");
+const popupProfileForm = popupProfile;
 popupProfileForm.addEventListener("submit", submitProfileForm);
 
 function submitProfileForm(evt) {
   evt.preventDefault();
-  const nameInput = popupTextTypeName.value;
-  profileInfoTitle.textContent = nameInput;
-
-  const jobInput = popupTextTypeStatus.value;
-  profileInfoSubtitle.textContent = jobInput;
-  popupProfile.classList.remove("popup_opened");
+  profileInfoTitle.textContent = popupTextTypeName.value;
+  profileInfoSubtitle.textContent = popupTextTypeStatus.value;
+  closePopup(popupProfile);
 }
 
 profileOpenPopupButton.addEventListener("click", openProfile);
-popupProfileCloseButton.addEventListener("click", closeProfile);
+popupProfileCloseButton.addEventListener("click", closePopup(popupProfile));
 
 popupProfile.addEventListener("click", function (evt) {
   if (evt.target === evt.currentTarget) {
-    closeProfile();
+    closePopup(popupProfile);
   }
 });
 
@@ -108,7 +100,7 @@ function createCard(name, link) {
   card.querySelector(".element__photo").addEventListener("click", function () {
     imagePopup.src = link;
     subtitlePopup.textContent = name;
-    openPopupImage();
+    openPopup(popupImage);
   });
 
   return card;
@@ -122,33 +114,27 @@ const profileOpenPopupButtonAdd = document.querySelector(".profile__button");
 const popupAdd = document.querySelector(".popup-add");
 const popupCloseButtonAdd = document.querySelector(".popup-add__close-button");
 
-function openPopupAdd() {
-  openPopup(popupAdd);
-}
-
-function closePopupAdd() {
-  closePopup(popupAdd);
-}
+profileOpenPopupButtonAdd.addEventListener("click", () => openPopup(popupAdd));
+popupCloseButtonAdd.addEventListener("click", () => closePopup(popupAdd));
 
 function formSubmitHandlerAddCard(evt) {
   evt.preventDefault();
   const cardItem = createCard(inputName.value, inputLink.value);
-  render(cardItem);
   elements.prepend(cardItem);
   inputName.value = "";
   inputLink.value = "";
-  closePopupAdd();
+  closePopup(popupAdd);
 }
 
 const popupFormAdd = document.querySelector(".popup-add__form");
 popupFormAdd.addEventListener("submit", formSubmitHandlerAddCard);
 
-profileOpenPopupButtonAdd.addEventListener("click", openPopupAdd);
-popupCloseButtonAdd.addEventListener("click", closePopupAdd);
+profileOpenPopupButtonAdd.addEventListener("click", openPopup(popupAdd));
+popupCloseButtonAdd.addEventListener("click", closePopup(popupAdd));
 
 popupAdd.addEventListener("click", function (evt) {
   if (evt.target === evt.currentTarget) {
-    closePopupAdd();
+    closePopup(popupAdd);
   }
 });
 
@@ -158,19 +144,14 @@ const popupCloseButtonImage = document.querySelector(
   ".popup-image__close-button"
 );
 
-function openPopupImage() {
-  openPopup(popupImage);
-}
+popupOpenElementPhoto.addEventListener("click", () => openPopup(popupImage));
+popupCloseButtonImage.addEventListener("click", () => closePopup(popupImage));
 
-function closePopupImage() {
-  closePopup(popupImage);
-}
-
-popupOpenElementPhoto.addEventListener("click", openPopupImage);
-popupCloseButtonImage.addEventListener("click", closePopupImage);
+popupOpenElementPhoto.addEventListener("click", openPopup(popupImage));
+popupCloseButtonImage.addEventListener("click", closePopup(popupImage));
 
 popupImage.addEventListener("click", function (evt) {
   if (evt.target === evt.currentTarget) {
-    closePopupImage();
+    closePopup(popupImage);
   }
 });
