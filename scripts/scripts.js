@@ -125,7 +125,7 @@ function formSubmitHandlerAddCard(evt) {
   closePopup(popupAdd);
 }
 
-const popupFormAdd = document.querySelector(".popup-add__form");
+const popupFormAdd = document.querySelector("#popup__form-add");
 popupFormAdd.addEventListener("submit", formSubmitHandlerAddCard);
 
 popupAdd.addEventListener("click", function (evt) {

@@ -71,7 +71,7 @@ const enableValidation = (config) => {
 // enableValidation();
 
 enableValidation({
-  formSelector: "#popup__form",
+  formSelector: ".popup__form",
   inputSelector: ".popup__text",
   submitButtonSelector: ".submit-button",
   inactiveButtonClass: "submit-button_inactive",
