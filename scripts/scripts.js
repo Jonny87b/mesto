@@ -27,7 +27,7 @@ const initialCards = [
 
 const profileOpenPopupButton = document.querySelector(".profile-info__button");
 const popupProfile = document.querySelector(".popup-edit");
-const popupProfileCloseButton = document.querySelector("#popup-edit_close");
+// const popupProfileCloseButton = document.querySelector("#popup-edit_close");
 const popupTextTypeName = document.querySelector(".popup__text_type_username");
 const popupTextTypeStatus = document.querySelector(".popup__text_type_status");
 const profileInfoTitle = document.querySelector(".profile-info__title");
@@ -125,7 +125,7 @@ function render(card) {
 
 const profileOpenPopupButtonAdd = document.querySelector(".profile__button");
 const popupAdd = document.querySelector(".popup-add");
-const popupCloseButtonAdd = document.querySelector("#popup-add_close");
+// const popupCloseButtonAdd = document.querySelector("#popup-add_close");
 const buttonSubmit = document.querySelector("#submit");
 
 profileOpenPopupButtonAdd.addEventListener("click", () => openPopup(popupAdd));
