@@ -28,7 +28,7 @@ const initialCards = [
 const profileOpenPopupButton = document.querySelector(".profile-info__button");
 const popupProfile = document.querySelector(".popup-edit");
 const popupProfileCloseButton = document.querySelector(".popup__close-button");
-const popupTextTypeName = document.querySelector(".popup__text_type_name");
+const popupTextTypeName = document.querySelector(".popup__text_type_username");
 const popupTextTypeStatus = document.querySelector(".popup__text_type_status");
 const profileInfoTitle = document.querySelector(".profile-info__title");
 const profileInfoSubtitle = document.querySelector(".profile-info__subtitle");
@@ -71,8 +71,8 @@ popupProfile.addEventListener("click", function (evt) {
 
 const elements = document.querySelector(".elements");
 const template = document.querySelector("#template").content;
-const inputName = document.querySelector(".popup-add__text_type_name");
-const inputLink = document.querySelector(".popup-add__text_type_link");
+const inputName = document.querySelector(".popup__text_type_name");
+const inputLink = document.querySelector(".popup__text_type_link");
 const imagePopup = document.querySelector(".popup-image__image");
 const subtitlePopup = document.querySelector(".popup-image__title");
 
@@ -146,5 +146,20 @@ popupCloseButtonImage.addEventListener("click", () => closePopup(popupImage));
 popupImage.addEventListener("click", function (evt) {
   if (evt.target === evt.currentTarget) {
     closePopup(popupImage);
+  }
+});
+document.addEventListener("keydown", function (evt) {
+  if (evt.key == "Escape") {
+    closePopup(popupImage);
+  }
+});
+document.addEventListener("keydown", function (evt) {
+  if (evt.key == "Escape") {
+    closePopup(popupAdd);
+  }
+});
+document.addEventListener("keydown", function (evt) {
+  if (evt.key == "Escape") {
+    closePopup(popupProfile);
   }
 });

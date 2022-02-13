@@ -1,0 +1,6 @@
+.submit-button_inactive {
+  color: #c4c4c4;
+  background: none;
+  pointer-events: none;
+  user-select: none;
+}

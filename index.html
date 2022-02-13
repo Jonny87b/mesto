@@ -48,21 +48,35 @@
     <div class="popup popup-edit" id="popup_edit">
       <div class="popup__body">
         <h3 class="popup__title">Редактировать профиль</h3>
-        <form name="form-edit" class="popup__form">
+        <form name="form-edit" class="popup__form" id="popup__form" novalidate>
           <input
-            id="popup_name"
-            name="name_edit"
-            class="popup__text popup__text_type_name"
+            id="username"
+            name="username"
+            class="popup__text popup__text_type_username"
             type="text"
             placeholder=""
+            minlength="2"
+            maxlength="40"
+            required
           />
+          <span
+            id="username-error"
+            class="popup-error popup-error_visible"
+          ></span>
           <input
-            id="popup_status"
+            id="status"
             name="status_edit"
             class="popup__text popup__text_type_status"
             type="text"
             placeholder=""
+            minlength="2"
+            maxlength="200"
+            required
           />
+          <span
+            id="status-error"
+            class="popup-error popup-error_visible"
+          ></span>
           <button type="submit" class="submit-button">сохранить</button>
         </form>
         <button type="button" class="popup__close-button"></button>
@@ -71,21 +85,32 @@
     <div class="popup popup-add" id="popup_add">
       <div class="popup-add__body">
         <h3 class="popup-add__title">Новое место</h3>
-        <form name="form-add" class="popup-add__form">
+        <form
+          name="form-add"
+          class="popup-add__form"
+          id="popup__form"
+          novalidate
+        >
           <input
-            id="popup-add_name"
-            name="name_add"
-            class="popup-add__text popup-add__text_type_name"
+            id="name"
+            name="name"
+            class="popup__text popup__text_type_name"
             type="text"
             placeholder="Название"
+            minlength="2"
+            maxlength="30"
+            required
           />
+          <span id="name-error" class="popup-error popup-error_visible"></span>
           <input
-            id="popup-add_link"
-            name="link_add"
-            class="popup-add__text popup-add__text_type_link"
-            type="text"
+            id="link"
+            name="link"
+            class="popup__text popup__text_type_link"
+            type="url"
             placeholder="Ссылка на картинку"
+            required
           />
+          <span id="link-error" class="popup-error popup-error_visible"></span>
           <button type="submit" class="submit-button" id="submit">
             сохранить
           </button>
@@ -119,5 +144,6 @@
       </article>
     </template>
     <script src="scripts/scripts.js"></script>
+    <script src="scripts/validate.js"></script>
   </body>
 </html>
