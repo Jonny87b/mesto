@@ -1,7 +1,8 @@
 .popup-error {
   position: absolute;
   font-family: "inter", arial, sans-serif;
-  margin: -25px 0;
+
+  margin: -28px 0;
   font-size: 12px;
   line-height: 14.52px;
   font-weight: 400;

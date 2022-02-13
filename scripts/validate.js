@@ -38,19 +38,19 @@ const toggleButtonState = (config, inputList, buttonElement) => {
   }
 };
 
-function resetValidation(config, inputList, buttonElement, formElement) {
-  toggleButtonState(config, inputList, buttonElement);
-  inputList.forEach((inputElement) => {
-    hideInputError(config, formElement, inputElement);
-  });
-}
+// function resetValidation(config, inputList, buttonElement, formElement) {
+//   toggleButtonState(config, inputList, buttonElement);
+//   inputList.forEach((inputElement) => {
+//     hideInputError(config, formElement, inputElement);
+//   });
+// }
 
 const setEventListeners = (config, formElement) => {
   const inputList = Array.from(
     formElement.querySelectorAll(config.inputSelector)
   );
   const buttonElement = formElement.querySelector(config.submitButtonSelector);
-  resetValidation(config, inputList, buttonElement, formElement);
+  toggleButtonState(config, inputList, buttonElement);
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
       checkInputValidity(config, formElement, inputElement);
