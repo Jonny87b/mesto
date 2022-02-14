@@ -126,7 +126,7 @@ function render(card) {
 const profileOpenPopupButtonAdd = document.querySelector(".profile__button");
 const popupAdd = document.querySelector(".popup-add");
 // const popupCloseButtonAdd = document.querySelector("#popup-add_close");
-const buttonSubmit = document.querySelector("#submit");
+const cardSubmitButton = document.querySelector("#submit");
 
 profileOpenPopupButtonAdd.addEventListener("click", () => openPopup(popupAdd));
 
@@ -137,7 +137,8 @@ function handleFormSubmitAddCard(evt) {
   evt.target.reset();
   inputName.value = "";
   inputLink.value = "";
-  buttonSubmit.classList.add("submit-button_inactive");
+  cardSubmitButton.setAttribute("disabled", "");
+  cardSubmitButton.classList.add("submit-button_inactive");
   closePopup(popupAdd);
 }
 
