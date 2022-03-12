@@ -1,3 +1,5 @@
+import { FormValidator } from "./FormValidator.js";
+
 const initialCards = [
   {
     name: "Архыз",
@@ -32,6 +34,24 @@ const popupTextTypeName = document.querySelector(".popup__text_type_username");
 const popupTextTypeStatus = document.querySelector(".popup__text_type_status");
 const profileInfoTitle = document.querySelector(".profile-info__title");
 const profileInfoSubtitle = document.querySelector(".profile-info__subtitle");
+
+const popupProfileForm = popupProfile.querySelector(".popup__form");
+const popupFormAdd = document.querySelector("#popup__form-add");
+
+const config = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__text",
+  submitButtonSelector: ".submit-button",
+  inactiveButtonClass: "submit-button_inactive",
+  inputErrorClass: "popup__text_type_error",
+  errorClass: "popup-error_visible",
+};
+
+const editProfileValidation = new FormValidator(config, popupProfileForm);
+const addCardValidation = new FormValidator(config, popupFormAdd);
+
+editProfileValidation.enableValidation();
+addCardValidation.enableValidation();
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
@@ -69,7 +89,6 @@ popups.forEach((popup) => {
   });
 });
 
-const popupProfileForm = popupProfile.querySelector(".popup__form");
 popupProfileForm.addEventListener("submit", submitProfileForm);
 
 function submitProfileForm(evt) {
@@ -142,7 +161,6 @@ function handleFormSubmitAddCard(evt) {
   closePopup(popupAdd);
 }
 
-const popupFormAdd = document.querySelector("#popup__form-add");
 popupFormAdd.addEventListener("submit", handleFormSubmitAddCard);
 
 const popupOpenElementPhoto = document.querySelector(".element__photo");
