@@ -1,4 +1,5 @@
 import { FormValidator } from "./FormValidator.js";
+import { Card } from "./Card.js";
 
 const initialCards = [
   {
@@ -37,6 +38,7 @@ const profileInfoSubtitle = document.querySelector(".profile-info__subtitle");
 
 const popupProfileForm = popupProfile.querySelector(".popup__form");
 const popupFormAdd = document.querySelector("#popup__form-add");
+const popupImage = document.querySelector(".popup-image");
 
 const config = {
   formSelector: ".popup__form",
@@ -53,7 +55,7 @@ const addCardValidation = new FormValidator(config, popupFormAdd);
 editProfileValidation.enableValidation();
 addCardValidation.enableValidation();
 
-function openPopup(popup) {
+export function openPopup(popup) {
   popup.classList.add("popup_opened");
   document.addEventListener("keydown", closeByEscape);
 }
@@ -108,50 +110,67 @@ const imagePopup = document.querySelector(".popup-image__image");
 const subtitlePopup = document.querySelector(".popup-image__title");
 
 initialCards.forEach(function (item) {
-  const cardItem = createCard(item.name, item.link);
-  render(cardItem);
+  render(item);
 });
 
-function createCard(name, link) {
-  const card = template.querySelector(".element").cloneNode(true);
-  const photo = card.querySelector(".element__photo");
-  card.querySelector(".element__title").textContent = name;
-  photo.src = link;
-  photo.alt = link;
-  card
-    .querySelector(".element__heart")
-    .addEventListener("click", function (evt) {
-      evt.target.classList.toggle("element__heart_active");
-    });
-  card
-    .querySelector(".element__delete")
-    .addEventListener("click", function (evt) {
-      evt.target.closest(".element").remove();
-    });
-  photo.addEventListener("click", function () {
-    imagePopup.src = link;
-    imagePopup.alt = name;
-    subtitlePopup.textContent = name;
-    openPopup(popupImage);
-  });
-
-  return card;
+export function handelPhotoPopup(evt) {
+  const cardData = evt.target;
+  const name = cardData
+    .closest(".element")
+    .querySelector(".element__title").textContent;
+  const link = evt.target.src;
+  imagePopup.src = link;
+  imagePopup.alt = name;
+  subtitlePopup.textContent = name;
+  openPopup(popupImage);
 }
 
-function render(card) {
-  elements.append(card);
+// function createCard(name, link) {
+//   const card = template.querySelector(".element").cloneNode(true);
+//   const photo = card.querySelector(".element__photo");
+//   card.querySelector(".element__title").textContent = name;
+//   photo.src = link;
+//   photo.alt = link;
+//   card
+//     .querySelector(".element__heart")
+//     .addEventListener("click", function (evt) {
+//       evt.target.classList.toggle("element__heart_active");
+//     });
+//   card
+//     .querySelector(".element__delete")
+//     .addEventListener("click", function (evt) {
+//       evt.target.closest(".element").remove();
+//     });
+//   photo.addEventListener("click", function () {
+//     imagePopup.src = link;
+//     imagePopup.alt = name;
+//     subtitlePopup.textContent = name;
+//     openPopup(popupImage);
+//   });
+
+//   return card;
+// }
+
+function render(item) {
+  const card = new Card(item.name, item.link, "#template");
+  const addCard = card.createCard();
+  elements.append(addCard);
 }
 
 const profileOpenPopupButtonAdd = document.querySelector(".profile__button");
 const popupAdd = document.querySelector(".popup-add");
-// const popupCloseButtonAdd = document.querySelector("#popup-add_close");
 const cardSubmitButton = document.querySelector("#submit");
 
 profileOpenPopupButtonAdd.addEventListener("click", () => openPopup(popupAdd));
 
 function handleFormSubmitAddCard(evt) {
   evt.preventDefault();
-  const cardItem = createCard(inputName.value, inputLink.value);
+  // const cardItem = createCard(inputName.value, inputLink.value);
+  const cardItem = new Card(
+    inputName.value,
+    inputLink.value,
+    "#template"
+  ).createCard();
   elements.prepend(cardItem);
   evt.target.reset();
   inputName.value = "";
@@ -164,6 +183,4 @@ function handleFormSubmitAddCard(evt) {
 popupFormAdd.addEventListener("submit", handleFormSubmitAddCard);
 
 const popupOpenElementPhoto = document.querySelector(".element__photo");
-const popupImage = document.querySelector(".popup-image");
-
 popupOpenElementPhoto.addEventListener("click", () => openPopup(popupImage));
