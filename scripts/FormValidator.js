@@ -2,6 +2,12 @@ export class FormValidator {
   constructor(settings, form) {
     this._form = form;
     this._settings = settings;
+    this._inputList = Array.from(
+      this._form.querySelectorAll(this._settings.inputSelector)
+    );
+    this._buttonElement = this._form.querySelector(
+      this._settings.submitButtonSelector
+    );
   }
   _showInputError(inputElement, errorMessage) {
     const { inputErrorClass, errorClass } = this._settings;
@@ -40,12 +46,6 @@ export class FormValidator {
     }
   }
   _setEventListeners() {
-    this._inputList = Array.from(
-      this._form.querySelectorAll(this._settings.inputSelector)
-    );
-    this._buttonElement = this._form.querySelector(
-      this._settings.submitButtonSelector
-    );
     this._toggleButtonState();
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
