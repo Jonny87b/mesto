@@ -18,6 +18,8 @@ import {
   cardSubmitButton,
 } from "./constants.js";
 
+import "../pages/index.css";
+
 const config = {
   formSelector: ".popup__form",
   inputSelector: ".popup__text",
