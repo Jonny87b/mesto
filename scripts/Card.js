@@ -1,5 +1,3 @@
-// import { handelPhotoPopup } from "./utils.js";
-// import { handelPhotoPopup } from "./utils.js";
 export class Card {
   constructor(name, link, cardTemplateSelector, handleImageClick) {
     this._template = document.querySelector(cardTemplateSelector).content;

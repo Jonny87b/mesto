@@ -3,23 +3,20 @@ import { Card } from "./Card.js";
 import { initialCards } from "./InitialCards.js";
 import { Section } from "./Section.js";
 import { PopupWithImage } from "./PopupWithImage.js";
+import { PopupWithForm } from "./PopupWithForm.js";
+import { UserInfo } from "./UserInfo.js";
 import {
   popupFormAdd,
   profileOpenPopupButtonAdd,
+  profileOpenPopupButton,
   popupProfileForm,
   popupTextTypeName,
   popupTextTypeStatus,
-  profileInfoTitle,
-  profileInfoSubtitle,
   elements,
   inputName,
   inputLink,
   cardSubmitButton,
-  profileOpenPopupButton,
 } from "./constants.js";
-
-import { PopupWithForm } from "./PopupWithForm.js";
-import { UserInfo } from "./UserInfo.js";
 
 const config = {
   formSelector: ".popup__form",
@@ -36,53 +33,13 @@ const addCardValidation = new FormValidator(config, popupFormAdd);
 editProfileValidation.enableValidation();
 addCardValidation.enableValidation();
 
-// const popupClass = new Popup(".popup");
-// popupClass.setEventListeners();
-
-// const popups = document.querySelectorAll(".popup");
-
-// popups.forEach((popup) => {
-//   popup.addEventListener("mousedown", (evt) => {
-//     if (evt.target.classList.contains("popup_opened")) {
-//       closePopup(popup);
-//     }
-//     if (evt.target.classList.contains("popup__close-button")) {
-//       closePopup(popup);
-//     }
-//   });
-// });
-
-// initialCards.forEach((item) => {
-//   render(item);
-// });
-
 const render = (item) => {
   const card = new Card(item.name, item.link, ".template", () => {
-    popupImg.open(item.name, item.link);
+    popupImage.open(item.name, item.link);
   });
   const addCard = card.createCard();
   elements.append(addCard);
 };
-
-const section = new Section(
-  { items: initialCards, renderer: render },
-  ".elements"
-);
-section.renderItems();
-
-const popupImg = new PopupWithImage(".popup-image");
-popupImg.setEventListeners();
-
-const popupEditForm = new PopupWithForm(".popup-edit", submitProfileForm);
-popupEditForm.setEventListeners();
-
-const popupAddForm = new PopupWithForm(".popup-add", handleFormSubmitAddCard);
-popupAddForm.setEventListeners();
-
-const userInfo = new UserInfo({
-  profileUsernameSelection: ".profile-info__title",
-  profileStatusSelection: ".profile-info__subtitle",
-});
 
 function openProfile() {
   popupEditForm.open();
@@ -90,7 +47,6 @@ function openProfile() {
   popupTextTypeName.value = username;
   popupTextTypeStatus.value = status;
 }
-profileOpenPopupButton.addEventListener("click", () => openProfile());
 
 function submitProfileForm(data) {
   const { username, status } = data;
@@ -114,6 +70,24 @@ function handleFormSubmitAddCard(data) {
 }
 
 profileOpenPopupButtonAdd.addEventListener("click", () => popupAddForm.open());
+profileOpenPopupButton.addEventListener("click", () => openProfile());
 
-// popupFormAdd.addEventListener("submit", handleFormSubmitAddCard);
-// popupProfileForm.addEventListener("submit", submitProfileForm);
+const section = new Section(
+  { items: initialCards, renderer: render },
+  ".elements"
+);
+section.renderItems();
+
+const popupImage = new PopupWithImage(".popup-image");
+popupImage.setEventListeners();
+
+const popupEditForm = new PopupWithForm(".popup-edit", submitProfileForm);
+popupEditForm.setEventListeners();
+
+const popupAddForm = new PopupWithForm(".popup-add", handleFormSubmitAddCard);
+popupAddForm.setEventListeners();
+
+const userInfo = new UserInfo({
+  profileUsernameSelection: ".profile-info__title",
+  profileStatusSelection: ".profile-info__subtitle",
+});
