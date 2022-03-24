@@ -1,10 +1,11 @@
-import { handelPhotoPopup } from "./utils.js";
-
+// import { handelPhotoPopup } from "./utils.js";
+// import { handelPhotoPopup } from "./utils.js";
 export class Card {
-  constructor(name, link, cardTemplateSelector) {
+  constructor(name, link, cardTemplateSelector, handleImageClick) {
     this._template = document.querySelector(cardTemplateSelector).content;
     this._name = name;
     this._link = link;
+    this._handleImageClick = handleImageClick;
   }
 
   _handelLikeButton() {
@@ -21,7 +22,7 @@ export class Card {
     const deleteButton = this._card.querySelector(".element__delete");
     this._likeButton.addEventListener("click", () => this._handelLikeButton());
     deleteButton.addEventListener("click", () => this._handelDeleteButton());
-    this._photo.addEventListener("click", handelPhotoPopup);
+    this._photo.addEventListener("click", this._handleImageClick);
   }
   createCard() {
     this._card = this._template.querySelector(".element").cloneNode(true);
