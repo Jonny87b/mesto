@@ -44,7 +44,10 @@ function submitProfileForm(data) {
   popupEditForm.close();
 }
 
-profileOpenPopupButtonAdd.addEventListener("click", () => popupAddForm.open());
+profileOpenPopupButtonAdd.addEventListener("click", () => {
+  addCardValidation.disableSubmitButton();
+  popupAddForm.open();
+});
 profileOpenPopupButton.addEventListener("click", () => openProfile());
 
 const popupImage = new PopupWithImage(".popup-image");
