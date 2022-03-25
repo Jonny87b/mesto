@@ -38,11 +38,11 @@ export class FormValidator {
   }
   _enableSubmitButton() {
     this._buttonElement.classList.remove(this._settings.inactiveButtonClass);
-    this._buttonElement.removeAttribute("disabled", "");
+    this._buttonElement.disabled = false;
   }
   disableSubmitButton() {
     this._buttonElement.classList.add(this._settings.inactiveButtonClass);
-    this._buttonElement.setAttribute("disabled", "");
+    this._buttonElement.disabled = true;
   }
 
   _toggleButtonState() {

@@ -26,7 +26,6 @@ export class Card {
   }
   createCard() {
     this._card = this._template.cloneNode(true);
-    // this._card = this._template.querySelector(".element").cloneNode(true);
     this._photo = this._card.querySelector(".element__photo");
     this._likeButton = this._card.querySelector(".element__heart");
     this._card.querySelector(".element__title").textContent = this._name;

@@ -13,7 +13,3 @@ export const popupTextTypeName = document.querySelector(
 export const popupTextTypeStatus = document.querySelector(
   ".popup__text_type_status"
 );
-export const elements = document.querySelector(".elements");
-export const inputName = document.querySelector(".popup__text_type_name");
-export const inputLink = document.querySelector(".popup__text_type_link");
-export const cardSubmitButton = document.querySelector("#submit");

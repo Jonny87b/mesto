@@ -12,10 +12,6 @@ import {
   popupProfileForm,
   popupTextTypeName,
   popupTextTypeStatus,
-  elements,
-  inputName,
-  inputLink,
-  cardSubmitButton,
 } from "../utils/constants.js";
 
 import "../pages/index.css";
@@ -34,15 +30,6 @@ const addCardValidation = new FormValidator(config, popupFormAdd);
 
 editProfileValidation.enableValidation();
 addCardValidation.enableValidation();
-
-// const render = (item) => {
-//   const card = new Card(item.name, item.link, ".template", () => {
-//     popupImage.open(item.name, item.link);
-//   });
-//   const addCard = card.createCard();
-//   elements.append(addCard);
-//   // console.log(123);
-// };
 
 function openProfile() {
   popupEditForm.open();
@@ -88,7 +75,6 @@ const render = (data, elements) => {
 function handleCardFormSubmit(data) {
   const card = createCard(data);
   section.addItem(card);
-  disableSubmitButton();
   popupAddForm.close();
 }
 const section = new Section(
