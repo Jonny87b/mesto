@@ -1,10 +1,10 @@
-import { FormValidator } from "./FormValidator.js";
-import { Card } from "./Card.js";
-import { initialCards } from "./InitialCards.js";
-import { Section } from "./Section.js";
-import { PopupWithImage } from "./PopupWithImage.js";
-import { PopupWithForm } from "./PopupWithForm.js";
-import { UserInfo } from "./UserInfo.js";
+import { FormValidator } from "../components/FormValidator.js";
+import { Card } from "../components/Card.js";
+import { initialCards } from "../utils/InitialCards.js";
+import { Section } from "../components/Section.js";
+import { PopupWithImage } from "../components/PopupWithImage.js";
+import { PopupWithForm } from "../components/PopupWithForm.js";
+import { UserInfo } from "../components/UserInfo.js";
 import {
   popupFormAdd,
   profileOpenPopupButtonAdd,
@@ -16,7 +16,7 @@ import {
   inputName,
   inputLink,
   cardSubmitButton,
-} from "./constants.js";
+} from "../utils/constants.js";
 
 import "../pages/index.css";
 
@@ -35,13 +35,14 @@ const addCardValidation = new FormValidator(config, popupFormAdd);
 editProfileValidation.enableValidation();
 addCardValidation.enableValidation();
 
-const render = (item) => {
-  const card = new Card(item.name, item.link, ".template", () => {
-    popupImage.open(item.name, item.link);
-  });
-  const addCard = card.createCard();
-  elements.append(addCard);
-};
+// const render = (item) => {
+//   const card = new Card(item.name, item.link, ".template", () => {
+//     popupImage.open(item.name, item.link);
+//   });
+//   const addCard = card.createCard();
+//   elements.append(addCard);
+//   // console.log(123);
+// };
 
 function openProfile() {
   popupEditForm.open();
@@ -56,29 +57,8 @@ function submitProfileForm(data) {
   popupEditForm.close();
 }
 
-function handleFormSubmitAddCard(data) {
-  const cardItem = new Card(
-    inputName.value,
-    inputLink.value,
-    "#template"
-  ).createCard({
-    name: data.name,
-    link: data.link,
-  });
-  elements.prepend(cardItem);
-  cardSubmitButton.setAttribute("disabled", "");
-  cardSubmitButton.classList.add("submit-button_inactive");
-  popupAddForm.close();
-}
-
 profileOpenPopupButtonAdd.addEventListener("click", () => popupAddForm.open());
 profileOpenPopupButton.addEventListener("click", () => openProfile());
-
-const section = new Section(
-  { items: initialCards, renderer: render },
-  ".elements"
-);
-section.renderItems();
 
 const popupImage = new PopupWithImage(".popup-image");
 popupImage.setEventListeners();
@@ -86,10 +66,33 @@ popupImage.setEventListeners();
 const popupEditForm = new PopupWithForm(".popup-edit", submitProfileForm);
 popupEditForm.setEventListeners();
 
-const popupAddForm = new PopupWithForm(".popup-add", handleFormSubmitAddCard);
+const popupAddForm = new PopupWithForm(".popup-add", handleCardFormSubmit);
 popupAddForm.setEventListeners();
 
 const userInfo = new UserInfo({
   profileUsernameSelection: ".profile-info__title",
   profileStatusSelection: ".profile-info__subtitle",
 });
+
+const createCard = (data) => {
+  const card = new Card(data, "#template", () => {
+    popupImage.open(data.name, data.link);
+  }).createCard();
+  return card;
+};
+const render = (data, elements) => {
+  const card = createCard(data);
+  elements.prepend(card);
+};
+
+function handleCardFormSubmit(data) {
+  const card = createCard(data);
+  section.addItem(card);
+  disableSubmitButton();
+  popupAddForm.close();
+}
+const section = new Section(
+  { items: initialCards, renderer: render },
+  ".elements"
+);
+section.renderItems();

@@ -36,13 +36,20 @@ export class FormValidator {
       return !inputElement.validity.valid;
     });
   }
+  _enableSubmitButton() {
+    this._buttonElement.classList.remove(this._settings.inactiveButtonClass);
+    this._buttonElement.removeAttribute("disabled", "");
+  }
+  disableSubmitButton() {
+    this._buttonElement.classList.add(this._settings.inactiveButtonClass);
+    this._buttonElement.setAttribute("disabled", "");
+  }
+
   _toggleButtonState() {
     if (this._hasInvalidInput()) {
-      this._buttonElement.classList.add(this._settings.inactiveButtonClass);
-      this._buttonElement.setAttribute("disabled", "");
+      this.disableSubmitButton();
     } else {
-      this._buttonElement.classList.remove(this._settings.inactiveButtonClass);
-      this._buttonElement.removeAttribute("disabled", "");
+      this._enableSubmitButton();
     }
   }
   _setEventListeners() {

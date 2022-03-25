@@ -1,8 +1,10 @@
 export class Card {
-  constructor(name, link, cardTemplateSelector, handleImageClick) {
-    this._template = document.querySelector(cardTemplateSelector).content;
-    this._name = name;
-    this._link = link;
+  constructor(data, cardTemplateSelector, handleImageClick) {
+    this._template = document
+      .querySelector(cardTemplateSelector)
+      .content.querySelector(".element");
+    this._name = data.name;
+    this._link = data.link;
     this._handleImageClick = handleImageClick;
   }
 
@@ -23,10 +25,10 @@ export class Card {
     this._photo.addEventListener("click", this._handleImageClick);
   }
   createCard() {
-    this._card = this._template.querySelector(".element").cloneNode(true);
+    this._card = this._template.cloneNode(true);
+    // this._card = this._template.querySelector(".element").cloneNode(true);
     this._photo = this._card.querySelector(".element__photo");
     this._likeButton = this._card.querySelector(".element__heart");
-
     this._card.querySelector(".element__title").textContent = this._name;
     this._photo.src = this._link;
     this._photo.alt = `Изображение ${this._name}`;
