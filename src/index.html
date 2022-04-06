@@ -23,8 +23,8 @@
           />
           <div class="profile-info">
             <div class="profile-info__name">
-              <h1 class="profile-info__title">Жак-Ив Кусто</h1>
-              <p class="profile-info__subtitle">Исследователь океана</p>
+              <h1 class="profile-info__title"></h1>
+              <p class="profile-info__subtitle"></p>
             </div>
             <button
               type="button"
@@ -125,6 +125,24 @@
         ></button>
       </div>
     </div>
+    <div class="popup popup-delete" id="popup_delete">
+      <div class="popup__body">
+        <h3 class="popup__title">Вы уверены?</h3>
+        <form
+          name="form-add"
+          class="popup__form"
+          id="popup__form-add"
+          novalidate
+        >
+          <button type="submit" class="submit-button" id="submit">Да</button>
+        </form>
+        <button
+          type="button"
+          class="popup__close-button"
+          id="popup-add_close"
+        ></button>
+      </div>
+    </div>
     <div class="popup popup-image" id="popup_image">
       <div class="popup-image__body">
         <img class="popup-image__image" src="#" alt="фотокарточка" />
@@ -141,7 +159,10 @@
         <img class="element__photo" src="#" alt="фотокарточка" />
         <div class="element__block">
           <h2 class="element__title"></h2>
-          <button type="button" class="element__heart"></button>
+          <div class="element__heart-conteiner">
+            <button type="button" class="element__heart"></button>
+            <span class="element__heart-count"></span>
+          </div>
         </div>
         <button tupe="button" class="element__delete"></button>
       </article>

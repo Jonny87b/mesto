@@ -14,13 +14,17 @@ export class PopupWithForm extends Popup {
     });
     return value;
   }
+  changeSubmitHadler(newSubmitHadler) {
+    this._handleSubmit = newSubmitHadler;
+  }
   close() {
     super.close();
     this._form.reset();
   }
   setEventListeners() {
     super.setEventListeners();
-    this._form.addEventListener("submit", () => {
+    this._form.addEventListener("submit", (e) => {
+      e.preventDefault();
       this._handleSubmit(this._getInputValues());
     });
   }

@@ -15,6 +15,27 @@ import {
 } from "../utils/constants.js";
 
 import "../pages/index.css";
+import { api } from "../components/Api.js";
+
+let userId;
+
+api.getProfile().then((res) => {
+  userInfo.setUserInfo(res.name, res.about);
+  userId = res._id;
+});
+api.getInitialCards().then((cardList) => {
+  cardList.forEach((data) => {
+    const card = createCard({
+      name: data.name,
+      link: data.link,
+      likes: data.likes,
+      id: data._id,
+      userId: userId,
+      ownerId: data.owner._id,
+    });
+    section.addItem(card);
+  });
+});
 
 const config = {
   formSelector: ".popup__form",
@@ -40,8 +61,10 @@ function openProfile() {
 
 function submitProfileForm(data) {
   const { username, status } = data;
-  userInfo.setUserInfo(username, status);
-  popupEditForm.close();
+  api.getEditProfile(username, status).then(() => {
+    userInfo.setUserInfo(username, status);
+    popupEditForm.close();
+  });
 }
 
 profileOpenPopupButtonAdd.addEventListener("click", () => {
@@ -59,29 +82,53 @@ popupEditForm.setEventListeners();
 const popupAddForm = new PopupWithForm(".popup-add", handleCardFormSubmit);
 popupAddForm.setEventListeners();
 
+const popupDeleteForm = new PopupWithForm(".popup-delete");
+popupDeleteForm.setEventListeners();
+
 const userInfo = new UserInfo({
   profileUsernameSelection: ".profile-info__title",
   profileStatusSelection: ".profile-info__subtitle",
 });
 
 const createCard = (data) => {
-  const card = new Card(data, "#template", () => {
-    popupImage.open(data.name, data.link);
-  }).createCard();
+  const card = new Card(
+    data,
+    "#template",
+    () => {
+      popupImage.open(data.name, data.link);
+    },
+    (id) => {
+      popupDeleteForm.open();
+      popupDeleteForm.changeSubmitHadler(() => {
+        api.deleteCard(id).then(() => {
+          card.handlerDeleteCard();
+          popupDeleteForm.close();
+        });
+      });
+    }
+  ).createCard();
+
   return card;
 };
-const render = (data, elements) => {
+
+const render = (data) => {
   const card = createCard(data);
-  elements.prepend(card);
+  section.addItem(card);
 };
 
 function handleCardFormSubmit(data) {
-  const card = createCard(data);
-  section.addItem(card);
-  popupAddForm.close();
+  api.getAddCards(data.name, data.link).then((res) => {
+    const card = createCard({
+      name: res.name,
+      link: res.link,
+      likes: res.likes,
+      id: res._id,
+      userId: userId,
+      ownerId: res.owner._id,
+    });
+    section.addItem(card);
+    popupAddForm.close();
+  });
 }
-const section = new Section(
-  { items: initialCards, renderer: render },
-  ".elements"
-);
+const section = new Section({ items: [], renderer: render }, ".elements");
 section.renderItems();

@@ -1,0 +1,5 @@
+.element__heart-conteiner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;      
+}
