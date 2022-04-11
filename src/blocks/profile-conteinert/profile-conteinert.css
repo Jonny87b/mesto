@@ -1,0 +1,16 @@
+.profile-conteinert{
+    position: relative;
+    max-width: 120px;
+    width: 100%;    
+    margin: 0 30px 0 0;
+    padding: 0;  
+    
+}
+.profile-conteinert:hover .profile-overlay {
+    opacity: 0.8;
+}
+@media screen and (max-width: 930px) {
+    .profile-conteinert {
+    margin: 0;
+    }
+}

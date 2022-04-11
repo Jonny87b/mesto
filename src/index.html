@@ -16,11 +16,20 @@
       </header>
       <main class="conteiner">
         <section class="profile">
-          <img
-            class="profile__avatar"
-            src="<%=require ('./images/Avatar/Avatar-Custo.jpg')%>"
-            alt="Жак-Ив Кусто"
-          />
+          <div class="profile-conteinert">
+            <img
+              class="profile__avatar"
+              src="<%=require ('./images/Avatar/Avatar-Custo.jpg')%>"
+              alt="Жак-Ив Кусто"
+            />
+            <div class="profile-overlay">
+              <button
+                type="button"
+                class="profile-avatar__button"
+                id="profile-avatar__button"
+              ></button>
+            </div>
+          </div>
           <div class="profile-info">
             <div class="profile-info__name">
               <h1 class="profile-info__title"></h1>
@@ -151,6 +160,35 @@
           type="button"
           class="popup__close-button"
           id="popup-image_close"
+        ></button>
+      </div>
+    </div>
+    <div class="popup popup-avatar" id="popup_avatar">
+      <div class="popup__body">
+        <h3 class="popup__title">Обновить аватар</h3>
+        <form
+          name="form-avatar"
+          class="popup__form"
+          id="popup__form-avatar"
+          novalidate
+        >
+          <input
+            id="link"
+            name="link"
+            class="popup__text popup__text_type_link"
+            type="url"
+            placeholder="Ссылка на картинку"
+            required
+          />
+          <span id="link-error" class="popup-error popup-error_visible"></span>
+          <button type="submit" class="submit-button" id="submit">
+            Cохранить
+          </button>
+        </form>
+        <button
+          type="button"
+          class="popup__close-button"
+          id="popup-avatar_close"
         ></button>
       </div>
     </div>
