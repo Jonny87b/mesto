@@ -6,7 +6,7 @@
 .header__logo{margin-bottom:41px;max-width:142px;padding:0}@media screen and (max-width:930px){.header__logo{margin-bottom:31.6px;margin-left:27px;max-width:103.74px}}
 .conteiner{margin:0;padding:0}
 .profile{align-items:center;color:#fff;display:flex;margin:40px auto 0;max-width:880px;padding:0}@media screen and (max-width:930px){.profile{flex-direction:column;margin:42px 19px 0}}
-.profile__avatar{border-radius:50%;height:120px;margin:0 30px 0 0;padding:0;width:120px}@media screen and (max-width:930px){.profile__avatar{margin:0}}
+.profile__avatar{border-radius:50%;height:120px;margin:0 30px 0 0;-o-object-fit:cover;object-fit:cover;padding:0;width:120px}
 .profile-info{align-self:center;display:flex;flex-direction:row;gap:18px;margin:22px 244px 25px 0;max-width:336px;padding:0}@media screen and (max-width:930px){.profile-info{align-items:center;margin:26.25px auto 0;position:relative}}
 .profile-info__name{align-items:baseline;display:flex;flex-direction:column;gap:5px;margin:0;padding:0}@media screen and (max-width:930px){.profile-info__name{align-items:center;gap:10px}}
 .profile-info__title{font-size:42px;font-weight:500;line-height:48px;margin:0;max-width:294px;overflow:hidden;padding:0;text-overflow:ellipsis;white-space:nowrap}@media screen and (max-width:930px){.profile-info__title{font-size:27px;line-height:32.68px;max-width:189px}}
@@ -43,4 +43,7 @@
 .submit-button_inactive{background:none;color:#c4c4c4;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
 .element__heart-count{font-size:13px;font-weight:400;line-height:15.73px;margin:6px 20px 0 0}
 .element__heart-conteiner{align-items:center;display:flex;flex-direction:column}
+.profile-conteinert{margin:0 30px 0 0;max-width:120px;padding:0;position:relative;width:100%}.profile-conteinert:hover .profile-overlay{opacity:.8}@media screen and (max-width:930px){.profile-conteinert{margin:0}}
+.profile-overlay{background-color:#000;bottom:0;height:100%;left:0;opacity:0;position:absolute;right:0;top:0;transition:.3s ease;width:100%}
+.profile-avatar__button{background-color:transparent;background-image:url(93c771f5f8582261951d.png);background-position:50%;background-repeat:no-repeat;border:none;color:#fff;cursor:pointer;font-size:100px;height:26px;left:50%;position:absolute;text-align:center;top:50%;transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);width:26px}.profile-avatar__button:hover{opacity:60%;transition-duration:.5s}
 
