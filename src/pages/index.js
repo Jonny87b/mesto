@@ -71,9 +71,9 @@ function openProfile() {
 }
 
 function submitProfileForm(data) {
-  const { username, status } = data;
-  api.getEditProfile(username, status).then(() => {
-    userInfo.setUserInfo(username, status);
+  const { username, status, avatar } = data;
+  api.getEditProfile(username, status, avatar).then((res) => {
+    userInfo.setUserInfo(res.username, res.status, res.avatar);
     popupEditForm.close();
   });
 }
@@ -104,9 +104,10 @@ const popupAvatarForm = new PopupWithForm(
 popupAvatarForm.setEventListeners();
 
 function handleAvatarFormSubmit() {
-  // console.log();
+  // const { username, status, avatar } = data;
   api.editAvatar().then((res) => {
-    userInfo.setUserInfo(res.title, res.subtitle, res.avatar);
+    console.log("res", res);
+    userInfo.setUserInfo(res.username, res.status, res.avatar);
   });
 }
 
