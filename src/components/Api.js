@@ -45,12 +45,40 @@ class Api {
       .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
       .catch(console.log);
   }
-  deleteCard(id) {
+  getDeleteCard(id) {
     return fetch(`${this._baseUrl}/cards/${id}`, {
       method: "DELETE",
       headers: this._headers,
     })
-      .then((res) => (res.ok ? res.json() : Promise.all.reject(res.status)))
+      .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
+      .catch(console.log);
+  }
+  getAddLike(id) {
+    return fetch(`${this._baseUrl}/cards/${id}/likes`, {
+      method: "PUT",
+      headers: this._headers,
+    })
+      .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
+      .catch(console.log);
+  }
+  getDeleteLike(id) {
+    return fetch(`${this._baseUrl}/cards/${id}/likes`, {
+      method: "DELETE",
+      headers: this._headers,
+    })
+      .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
+      .catch(console.log);
+  }
+  editAvatar(avatar) {
+    console.log(avatar);
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar,
+      }),
+    })
+      .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
       .catch(console.log);
   }
 
