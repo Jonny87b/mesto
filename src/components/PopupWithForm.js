@@ -5,6 +5,8 @@ export class PopupWithForm extends Popup {
     super(popupSelector);
     this._handleSubmit = handleSubmit;
     this._form = this._popup.querySelector(".popup__form");
+    this._submitButton = this._form.querySelector(".submit-button");
+    this._submitButtonText = this._submitButton.textContent;
   }
   _getInputValues() {
     const inputs = [...this._form.querySelectorAll(".popup__text")];
@@ -14,6 +16,15 @@ export class PopupWithForm extends Popup {
     });
     return value;
   }
+  renderLoading(isLoading) {
+    if (isLoading) {
+      this._submitButton.textContent = "Сохранение...";
+      console.log(this._submitButton);
+    } else {
+      this._submitButton.textContent = this._submitButtonText;
+    }
+  }
+
   changeSubmitHadler(newSubmitHadler) {
     this._handleSubmit = newSubmitHadler;
   }

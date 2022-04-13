@@ -71,11 +71,22 @@ function openProfile() {
 }
 
 function submitProfileForm(data) {
-  const { username, status, avatar } = data;
-  api.getEditProfile(username, status, avatar).then((res) => {
-    userInfo.setUserInfo(res.username, res.status, res.avatar);
-    popupEditForm.close();
-  });
+  popupEditForm.renderLoading(true);
+  const { username, status } = data;
+  api
+    .getEditProfile(username, status)
+    .then((res) => {
+      userInfo.setUserInfo(res.name, res.about, res.avatar);
+    })
+    .then(() => {
+      popupEditForm.close();
+    })
+    .catch((err) => {
+      () => renderError(`Ошибка: ${err}`);
+    })
+    .finally(() => {
+      popupEditForm.renderLoading(false);
+    });
 }
 
 profileOpenPopupButtonAdd.addEventListener("click", () => {
@@ -103,12 +114,22 @@ const popupAvatarForm = new PopupWithForm(
 );
 popupAvatarForm.setEventListeners();
 
-function handleAvatarFormSubmit() {
-  // const { username, status, avatar } = data;
-  api.editAvatar().then((res) => {
-    console.log("res", res);
-    userInfo.setUserInfo(res.username, res.status, res.avatar);
-  });
+function handleAvatarFormSubmit(data) {
+  popupAvatarForm.renderLoading(true);
+  api
+    .editAvatar(data.link)
+    .then((res) => {
+      userInfo.setUserInfo(res.name, res.about, res.avatar);
+    })
+    .then(() => {
+      popupAvatarForm.close();
+    })
+    .catch((err) => {
+      () => renderError(`Ошибка: ${err}`);
+    })
+    .finally(() => {
+      popupAvatarForm.renderLoading(false);
+    });
 }
 
 const createCard = (data) => {
@@ -149,18 +170,29 @@ const render = (data) => {
 };
 
 function handleCardFormSubmit(data) {
-  api.getAddCards(data.name, data.link).then((res) => {
-    const card = createCard({
-      name: res.name,
-      link: res.link,
-      likes: res.likes,
-      id: res._id,
-      userId: userId,
-      ownerId: res.owner._id,
+  popupAddForm.renderLoading(true);
+  api
+    .getAddCards(data.name, data.link)
+    .then((res) => {
+      const card = createCard({
+        name: res.name,
+        link: res.link,
+        likes: res.likes,
+        id: res._id,
+        userId: userId,
+        ownerId: res.owner._id,
+      });
+      section.addItem(card);
+    })
+    .then(() => {
+      popupAddForm.close();
+    })
+    .catch((err) => {
+      () => renderError(`Ошибка: ${err}`);
+    })
+    .finally(() => {
+      popupAddForm.renderLoading(false);
     });
-    section.addItem(card);
-    popupAddForm.close();
-  });
 }
 const section = new Section({ items: [], renderer: render }, ".elements");
 section.renderItems();
