@@ -1,4 +1,4 @@
-.profile-avatar__button{
+.profile-overlay__button{
     color: white;
     width: 26px;
     height: 26px;
@@ -11,12 +11,12 @@
     text-align: center;
     border: none;
     background-color: rgba(0, 0, 0, 0);
-    background-image: url(../../images/Avatar/Vector.png);
+    background-image: url(../../../images/Avatar/Vector.png);
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
 }
-.profile-avatar__button:hover {
+.profile-overlay__button:hover {
     opacity: 60%;
     transition-duration: 0.5s;
   }

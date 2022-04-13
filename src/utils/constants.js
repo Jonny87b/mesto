@@ -15,5 +15,5 @@ export const popupTextTypeStatus = document.querySelector(
   ".popup__text_type_status"
 );
 export const avatarOpenPopupButton = document.querySelector(
-  ".profile-avatar__button"
+  ".profile-overlay__button"
 );
