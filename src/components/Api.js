@@ -1,8 +1,5 @@
-// import { reject } from "core-js/fn/promise";
-
 class Api {
   constructor({ baseUrl, headers }) {
-    // тело конструктора
     this._headers = headers;
     this._baseUrl = baseUrl;
   }
@@ -70,7 +67,6 @@ class Api {
       .catch(console.log);
   }
   editAvatar(avatar) {
-    console.log(avatar);
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
@@ -81,8 +77,6 @@ class Api {
       .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
       .catch(console.log);
   }
-
-  // другие методы работы с API
 }
 
 export const api = new Api({
