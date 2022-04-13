@@ -47,7 +47,10 @@ profileOpenPopupButtonAdd.addEventListener("click", () => {
   popupAddForm.open();
 });
 profileOpenPopupButton.addEventListener("click", () => openProfile());
-avatarOpenPopupButton.addEventListener("click", () => popupAvatarForm.open());
+avatarOpenPopupButton.addEventListener("click", () => {
+  avatarValidation.disableSubmitButton();
+  popupAvatarForm.open();
+});
 
 const popupImage = new PopupWithImage(".popup-image");
 popupImage.setEventListeners();
