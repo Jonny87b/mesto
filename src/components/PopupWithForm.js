@@ -9,9 +9,9 @@ export class PopupWithForm extends Popup {
     this._submitButtonText = this._submitButton.textContent;
   }
   _getInputValues() {
-    const inputs = [...this._form.querySelectorAll(".popup__text")];
+    this._inputs = [...this._form.querySelectorAll(".popup__text")];
     const value = {};
-    inputs.forEach((input) => {
+    this._inputs.forEach((input) => {
       value[input.name] = input.value;
     });
     return value;
@@ -24,9 +24,6 @@ export class PopupWithForm extends Popup {
     }
   }
 
-  changeSubmitHadler(newSubmitHadler) {
-    this._handleSubmit = newSubmitHadler;
-  }
   close() {
     super.close();
     this._form.reset();
