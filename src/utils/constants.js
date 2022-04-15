@@ -17,3 +17,11 @@ export const popupTextTypeStatus = document.querySelector(
 export const avatarOpenPopupButton = document.querySelector(
   ".profile-overlay__button"
 );
+export const config = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__text",
+  submitButtonSelector: ".submit-button",
+  inactiveButtonClass: "submit-button_inactive",
+  inputErrorClass: "popup__text_type_error",
+  errorClass: "popup-error_visible",
+};

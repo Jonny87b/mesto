@@ -1,30 +1,28 @@
-const customFetch = (url, options = {}) => {
-  return fetch(url, options)
-    .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
-    .catch((err) => {
-      console.log(err);
-    });
-};
-
 class Api {
   constructor({ baseUrl, headers }) {
     this._headers = headers;
     this._baseUrl = baseUrl;
   }
 
+  _customFetch(url, options) {
+    return fetch(url, options).then((res) =>
+      res.ok ? res.json() : Promise.reject(res.status)
+    );
+  }
+
   getProfile() {
-    return customFetch(`${this._baseUrl}/users/me `, {
+    return this._customFetch(`${this._baseUrl}/users/me `, {
       headers: this._headers,
     });
   }
 
   getInitialCards() {
-    return customFetch(`${this._baseUrl}/cards  `, {
+    return this._customFetch(`${this._baseUrl}/cards  `, {
       headers: this._headers,
     });
   }
   getEditProfile(name, about) {
-    return customFetch(`${this._baseUrl}/users/me  `, {
+    return this._customFetch(`${this._baseUrl}/users/me  `, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
@@ -34,7 +32,7 @@ class Api {
     });
   }
   getAddCards(name, link) {
-    return customFetch(`${this._baseUrl}/cards  `, {
+    return this._customFetch(`${this._baseUrl}/cards  `, {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({
@@ -44,25 +42,25 @@ class Api {
     });
   }
   getDeleteCard(id) {
-    return customFetch(`${this._baseUrl}/cards/${id}`, {
+    return this._customFetch(`${this._baseUrl}/cards/${id}`, {
       method: "DELETE",
       headers: this._headers,
     });
   }
   getAddLike(id) {
-    return customFetch(`${this._baseUrl}/cards/${id}/likes`, {
+    return this._customFetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: "PUT",
       headers: this._headers,
     });
   }
   getDeleteLike(id) {
-    return customFetch(`${this._baseUrl}/cards/${id}/likes`, {
+    return this._customFetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: "DELETE",
       headers: this._headers,
     });
   }
   editAvatar(avatar) {
-    return customFetch(`${this._baseUrl}/users/me/avatar`, {
+    return this._customFetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({

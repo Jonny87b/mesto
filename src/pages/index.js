@@ -1,6 +1,5 @@
 import { FormValidator } from "../components/FormValidator.js";
 import { Card } from "../components/Card.js";
-import { initialCards } from "../utils/InitialCards.js";
 import { Section } from "../components/Section.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
@@ -14,6 +13,7 @@ import {
   popupProfileForm,
   popupTextTypeName,
   popupTextTypeStatus,
+  config,
 } from "../utils/constants.js";
 
 import "../pages/index.css";
@@ -26,14 +26,8 @@ const userInfo = new UserInfo({
   profileAvatarSelection: ".profile__avatar",
 });
 
-const config = {
-  formSelector: ".popup__form",
-  inputSelector: ".popup__text",
-  submitButtonSelector: ".submit-button",
-  inactiveButtonClass: "submit-button_inactive",
-  inputErrorClass: "popup__text_type_error",
-  errorClass: "popup-error_visible",
-};
+const section = new Section({ items: [], renderer: render }, ".elements");
+section.renderItems();
 
 const editProfileValidation = new FormValidator(config, popupProfileForm);
 const addCardValidation = new FormValidator(config, popupFormAdd);
@@ -109,50 +103,7 @@ function openProfile() {
   popupTextTypeStatus.value = status;
 }
 
-function submitProfileForm(data) {
-  popupEditForm.renderLoading(true);
-  const { username, status } = data;
-  api
-    .getEditProfile(username, status)
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      userInfo.setUserInfo(res.name, res.about, res.avatar);
-    })
-    .then(() => {
-      popupEditForm.close();
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-    .finally(() => {
-      popupEditForm.renderLoading(false);
-    });
-}
-
-function handleAvatarFormSubmit(data) {
-  popupAvatarForm.renderLoading(true);
-  api
-    .editAvatar(data.linkAvatar)
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      userInfo.setUserInfo(res.name, res.about, res.avatar);
-    })
-    .then(() => {
-      popupAvatarForm.close();
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-    .finally(() => {
-      popupAvatarForm.renderLoading(false);
-    });
-}
-
-const createCard = (data) => {
+function createCard(data) {
   const card = new Card(
     data,
     "#template",
@@ -206,12 +157,12 @@ const createCard = (data) => {
   );
 
   return card.createCard();
-};
+}
 
-const render = (data) => {
+function render(data) {
   const card = createCard(data);
   section.addItem(card);
-};
+}
 
 function handleCardFormSubmit(data) {
   popupAddForm.renderLoading(true);
@@ -241,5 +192,46 @@ function handleCardFormSubmit(data) {
       popupAddForm.renderLoading(false);
     });
 }
-const section = new Section({ items: [], renderer: render }, ".elements");
-section.renderItems();
+
+function handleAvatarFormSubmit(data) {
+  popupAvatarForm.renderLoading(true);
+  api
+    .editAvatar(data.linkAvatar)
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      userInfo.setUserInfo(res.name, res.about, res.avatar);
+    })
+    .then(() => {
+      popupAvatarForm.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      popupAvatarForm.renderLoading(false);
+    });
+}
+
+function submitProfileForm(data) {
+  popupEditForm.renderLoading(true);
+  const { username, status } = data;
+  api
+    .getEditProfile(username, status)
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      userInfo.setUserInfo(res.name, res.about, res.avatar);
+    })
+    .then(() => {
+      popupEditForm.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      popupEditForm.renderLoading(false);
+    });
+}
